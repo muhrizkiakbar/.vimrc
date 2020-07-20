@@ -37,7 +37,7 @@ Plugin 'tpope/vim-dispatch'
 Plugin 'jlanzarotta/bufexplorer'
 
 " Generic Programming Support 
-Plugin 'jakedouglas/exuberant-ctags'
+"Plugin 'jakedouglas/exuberant-ctags'
 Plugin 'honza/vim-snippets'
 Plugin 'somini/vim-autoclose'
 Plugin 'tomtom/tcomment_vim'
@@ -105,6 +105,10 @@ Plugin 'ajh17/spacegray.vim'
 Plugin 'atelierbram/Base2Tone-vim'
 Plugin 'colepeters/spacemacs-theme.vim'
 Plugin 'micha/vim-colors-solarized'
+Plugin 'yggdroot/indentLine'
+
+"Vim Instellisence
+Plugin 'neoclide/coc.nvim'
 
 " OSX stupid backspace fix
 set backspace=indent,eol,start
@@ -163,9 +167,9 @@ set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_enable_elixir_checker = 1
 " let g:syntastic_elixir_checkers = ["elixir"]
@@ -257,7 +261,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 if !exists('g:neocomplete#sources#omni#input_patterns')
   let g:neocomplete#sources#omni#input_patterns = {}
 endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
@@ -337,7 +341,7 @@ map <silent> <leader><cr> :noh<cr>
 map <C-o> <leader>be
 map <C-t> <leader>bt
 map <C-B> <leader>bs
-map <C-V> <leader>bv
+map <C-S> <leader>bv
 """"""""""""""""""""""""""""""""""""
 
 "Save file
@@ -359,7 +363,7 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
-
+let g:indentLine_color_term = 239
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
@@ -451,3 +455,47 @@ let g:webdevicons_enable_ctrlp = 1
 let g:webdevicons_enable_airline_tabline = 1
 let g:webdevicons_enable_airline_statusline = 1
 
+" deal with swps and backups here
+" create backups
+set backup
+" tell vim where to put its backup files
+set backupdir=/tmp
+" tell vim where to put swap files
+set dir=/tmp
+set timeoutlen=1000        " speed vim up
+set ttimeoutlen=0          " https://stackoverflow.com/questions/37644682/why-is-vim-so-slow/37645334
+set ttyfast                " Rendering
+set tw=500
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 1 tab == 2 spaces
+set shiftwidth=2
+set tabstop=2     " tab spacing
+set expandtab     " tabs are now spaces
+set ai            " Auto indent
+" set si            " Smart indent
+set wrap          " Wrap lines
+set nowrap        " Don't wrap text
+
+
+
+" adds blue highlight to vim in visual mode selections
+highlight Visual cterm=bold ctermbg=Blue ctermfg=NONE
+" Change cursor shape between insert and normal mode in iTerm2.app
+if $TERM_PROGRAM =~ "iTerm"
+    let &t_SI = "\<Esc>]50;CursorShape=1\x7" " Vertical bar in insert mode
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7" " Block in normal mode
+endif
+
+let NERDTreeShowHidden=1
+
+" Vim
+let g:indentLine_enabled = 1
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+
+
+inoremap <silent><expr> <NUL> coc#refresh()
