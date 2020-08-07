@@ -1,11 +1,12 @@
-"""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""" =>
 " Allan MacGregor Vimrc configuration 
 """""""""""""""""""""""""""""""""""""
 set nocompatible
 syntax on
 set nowrap
 set encoding=utf8
-set guifont=Hack_Regular_Nerd_Font_Complete:h11
+"set guifont=Hack_Regular_Nerd_Font_Complete:h11
+set guifont=Fira\ Code:h11
 """" START Vundle Configuration 
 
 " Disable file type for vundle
@@ -35,6 +36,7 @@ Plugin 'gilsondev/searchtasks.vim'
 Plugin 'shougo/neocomplete.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'jlanzarotta/bufexplorer'
+Plugin 'mattn/emmet-vim'
 
 " Generic Programming Support 
 "Plugin 'jakedouglas/exuberant-ctags'
@@ -311,7 +313,8 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 """""""""""""""""""""""""""""""""""""
 let mapleader = ","
 
-map <leader>bd :Bclose<cr>
+"map <leader>bd :Bclose<cr>
+map <leader>c :bd<CR>
 map <leader>ba :1,1000 bd!<cr>
 
 
