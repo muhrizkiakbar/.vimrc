@@ -14,7 +14,7 @@ set guifont=Fira\ Code:h11
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
@@ -35,12 +35,17 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'benmills/vimux'
 Plugin 'jeetsukumaran/vim-buffergator'
 Plugin 'gilsondev/searchtasks.vim'
-Plugin 'shougo/neocomplete.vim'
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+"Plugin 'shougo/deoplete.vim'
 Plugin 'tpope/vim-dispatch'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'mattn/emmet-vim'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'maksimr/vim-jsbeautify'
+Plugin 'prettier/vim-prettier', { 'do' : 'npm install' }
+
 " Generic Programming Support 
 "Plugin 'jakedouglas/exuberant-ctags'
 Plugin 'honza/vim-snippets'
@@ -95,7 +100,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'sjl/badwolf'
 Plugin 'tomasr/molokai'
 Plugin 'morhetz/gruvbox'
-Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+"Plugin 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plugin 'dracula/vim'
 Plugin 'junegunn/limelight.vim'
 Plugin 'mkarmona/colorsbox'
 Plugin 'romainl/Apprentice'
@@ -154,7 +160,6 @@ set cursorline
 
 "let base16colorspace=256  " Access colors present in 256 colorspace
 "colorscheme spacegray
-packadd! dracula
 syntax enable
 colorscheme dracula
 " colorscheme spacemacs-theme
@@ -227,7 +232,7 @@ let test#strategy = "vimux"
 
 " Neocomplete Settings
 let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 
@@ -366,7 +371,7 @@ nmap <leader>fa :setlocal foldmethod=indent<cr>
 
 
 let g:acp_enableAtStartup = 0
-" Use neocomplete.
+" Use deoplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
@@ -530,3 +535,5 @@ inoremap jk <ESC>
 " nerd commenter
 vmap ++ <plug>NERDCommenterToggle
 nmap ++ <plug>NERDCommenterToggle
+
+nmap <Leader>py <Plug>(Prettier)

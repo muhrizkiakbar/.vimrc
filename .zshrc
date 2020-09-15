@@ -13,11 +13,12 @@ export ZSH=~/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 source /usr/local/opt/powerlevel9k/powerlevel9k.zsh-theme
 ZSH_THEME="powerlevel9k/powerlevel9k"
-DEFAULT_USER=`whoami`
+#ZSH_THEME="dracula"
+DEFAULT_USER='whoami'
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-unsetopt correct_all
+#ENABLE_CORRECTION="true"
+#unsetopt correct_all
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
@@ -88,12 +89,12 @@ POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_beginning"
 POWERLEVEL9K_RVM_BACKGROUND="black"
 POWERLEVEL9K_RVM_FOREGROUND="249"
-POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="red"
+POWERLEVEL9K_RVM_VISUAL_IDENTIFIER_COLOR="blue"
 POWERLEVEL9K_RVM_BACKGROUND="black"
 POWERLEVEL9K_RVM_FOREGROUND="249"
-POWERLEVEL9K_TIME_BACKGROUND="black"
-POWERLEVEL9K_TIME_FOREGROUND="249"
-POWERLEVEL9K_TIME_FORMAT="\UF43A %D{%I:%M  \UF133  %m.%d.%y}"
+POWERLEVEL9K_TIME_BACKGROUND="blue"
+POWERLEVEL9K_TIME_FOREGROUND="black"
+POWERLEVEL9K_TIME_FORMAT='%D{%H:%M}'
 POWERLEVEL9K_STATUS_VERBOSE=false
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND='black'
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND='green'
@@ -122,8 +123,11 @@ POWERLEVEL9K_BATTERY_DISCONNECTED='$DEFAULT_COLOR'
 POWERLEVEL9K_BATTERY_LOW_THRESHOLD='10'
 POWERLEVEL9K_BATTERY_LOW_COLOR='red'
 POWERLEVEL9K_BATTERY_ICON='\uf1e6'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir battery context vcs root_indicator dir_writable)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(node_version status background_jobs host user)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir battery vcs root_indicator dir_writable docker_machine)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status background_jobs load ram user)
+POWERLEVEL9K_USER_ICON="\uF415" # 
+POWERLEVEL9K_ROOT_ICON="#"
+POWERLEVEL9K_SUDO_ICON=$'\uF09C' # 
 HIST_STAMPS="mm/dd/yyyy"
 DISABLE_UPDATE_PROMPT=true
 
@@ -163,6 +167,7 @@ alias doexworkbash="docker-compose exec workspace bash"
 alias doup="docker-compose up -d"
 alias portainer="cd /Users/diskominfo/Project/portrainer/ && docker-compose up -d"
 alias rails_dev="cd /Users/diskominfo/Project/rails_dev/ && docker-compose run --rm --service-ports rails_dev"
+alias rails6_dev="cd /Users/diskominfo/Project/rails6_dev/ && docker-compose run --rm --service-ports rails6_dev"
 alias deno_dev="cd /Users/diskominfo/Project/deno/ && docker-compose run --service-ports --rm deno"
 alias postgre="cd /Users/diskominfo/Project/postgres && docker-compose up -d"
 alias mysql="cd /Users/diskominfo/Project/mongo && docker-compose up -d"
